@@ -1,0 +1,6 @@
+# venv folder
+/venv
+# .env file
+.env
+# .idea folder
+/.idea
