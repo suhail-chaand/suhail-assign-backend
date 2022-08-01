@@ -2,7 +2,17 @@ from django.db import models
 
 
 class Product(models.Model):
-    model = models.CharField(max_length=20, null=False, blank=False)
+    CATEGORIES = (
+        ('LAP', 'Laptop'),
+        ('DPC', 'Desktop PC'),
+        ('NET', 'Networking Device'),
+        ('P&S', 'Printer and Scanner'),
+        ('PCP', 'PC Port'),
+        ('OTH', 'Other')
+    )
+
+    category = models.CharField(max_length=3, choices=CATEGORIES, default='OTH')
+    model = models.CharField(max_length=20, null=False, blank=False, unique=True)
     brand = models.CharField(max_length=50, null=False, blank=False)
     name = models.CharField(max_length=100, null=False, blank=False)
     tagline = models.CharField(max_length=100, null=False, blank=True)

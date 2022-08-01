@@ -32,6 +32,6 @@ class ProductView(RetrieveAPIView):
         except Exception as e:
             response = {
                 'message': 'Operation failed!',
-                'errors': str(e)
+                'error': str(e)
             }
-            return Response(response, status=status.HTTP_400_BAD_REQUEST)
+            return Response(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
