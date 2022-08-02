@@ -133,11 +133,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-# CORS_ALLOWED_ORIGINS = [
-#     os.getenv('ORIGIN_FRONTEND'),
-#     'https://checkout/stripe.com/'
-# ]
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
