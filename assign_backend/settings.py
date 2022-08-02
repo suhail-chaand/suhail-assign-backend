@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'product',
+    'stripe_payment',
 ]
 
 MIDDLEWARE = [
@@ -130,9 +131,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    os.getenv('ORIGIN_FRONTEND'),
-]
+CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ALLOWED_ORIGINS = [
+#     os.getenv('ORIGIN_FRONTEND'),
+#     'https://checkout/stripe.com/'
+# ]
 
 LOGGING = {
     'version': 1,
@@ -173,3 +177,8 @@ LOGGING = {
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': ('assign_backend.response_renderer.CustomResponseRenderer',),
 }
+
+# Stripe keys
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_WEBHOOK_KEY = os.getenv('STRIPE_WEBHOOK_KEY')

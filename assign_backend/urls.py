@@ -14,6 +14,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('product/', include('product.urls')),
+    path('stripe/', include('stripe_payment.urls')),
 
     path('admin', admin.site.urls),
     path('swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
