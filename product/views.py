@@ -1,8 +1,29 @@
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.generics import RetrieveAPIView
+from rest_framework.generics import (CreateAPIView,
+                                     RetrieveAPIView)
 from .models import Product
 from .serializers import ProductSerializer
+
+
+class AddProductView(CreateAPIView):
+    serializer_class = ProductSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid(raise_exception=False):
+            serializer.save()
+            response = {
+                'message': 'Product added successfully!',
+                'data': serializer.data
+            }
+            return Response(response, status=status.HTTP_201_CREATED)
+        else:
+            response = {
+                'message': 'Invalid product data!',
+                'error': serializer.errors
+            }
+            return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ProductView(RetrieveAPIView):

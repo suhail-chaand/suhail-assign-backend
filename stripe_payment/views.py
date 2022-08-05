@@ -50,8 +50,8 @@ class CreateCheckoutSessionView(GenericAPIView):
                     mode='payment',
                     payment_method_types=['card'],
                     billing_address_collection='required',
-                    success_url='http://localhost:4200/product-details/1?purchase=success',
-                    cancel_url='http://localhost:4200/product-details/1',
+                    success_url=f'http://localhost:4200/product-details/{product.id}?purchase=success',
+                    cancel_url=f'http://localhost:4200/product-details/{product.id}',
                 )
                 response = {
                     'message': 'Stripe checkout session created successfully!',
